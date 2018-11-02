@@ -15,8 +15,8 @@ class HomeTableSeeder extends Seeder
     	Home::truncate();
     	
         $home = new Home;
-        $home->background_image = 'frontend/images/banner.jpg';
-        $home->logo = 'frontend/images/logo.png';
+        $home->background_image = 'banner.jpg';
+        $home->logo = 'logo.png';
         $home->title = 'Cena con tus';
         $home->title_animate = 'Amigos:Familiares:Compañeros';
         $home->sub_title = 'Promociones y descuentos';

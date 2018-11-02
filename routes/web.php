@@ -24,5 +24,9 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'Admin'], func
 	Route::put('/home/{home}', 'HomeController@update')->name('home.update');
 
 	Route::get('/about', 'AboutController@index')->name('about.index');
+	Route::get('/about/{about}/edit', 'AboutController@edit')->name('about.edit');
+	Route::put('/about/{about}', 'AboutController@update')->name('about.update');
+
+	Route::resource('aboutimage', 'AboutImages');
 	// Route::resource('home', 'HomeController');
 });

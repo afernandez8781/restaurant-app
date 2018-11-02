@@ -18,39 +18,8 @@ class HomeController extends Controller
     public function index()
     {
         $home = DB::table('homes')->first();
-        return view('admin/home/index', compact('home'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return view('admin.home.index')->with(compact('home'));
     }
 
     /**
@@ -117,16 +86,5 @@ class HomeController extends Controller
 
         return redirect()->route('home.index')->with('successMessage','Página Home Actualizado');
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
