@@ -27,6 +27,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'Admin'], func
 	Route::get('/about/{about}/edit', 'AboutController@edit')->name('about.edit');
 	Route::put('/about/{about}', 'AboutController@update')->name('about.update');
 
-	Route::resource('aboutimage', 'AboutImages');
+	Route::resource('aboutimage', 'AboutImagesController', ['only' => ['store', 'create', 'destroy', 'update', 'edit']]);
 	// Route::resource('home', 'HomeController');
 });

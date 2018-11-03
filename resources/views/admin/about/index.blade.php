@@ -51,8 +51,13 @@
     </div>
   </div>
 
-
   <div class="col-md-12">
+
+    <a href="{{ route('aboutimage.create')}}" class="btn btn-primary">
+      <i class="material-icons">create_new_folder</i>
+      <spano >Crear imagen</span>
+    </a>
+
     <div class="card card-plain">
       <div class="card-header card-header-primary">
         <h4 class="card-title mt-0"> Foto de platos especiales </h4>
@@ -79,13 +84,13 @@
               </th>
             </tr></thead>
             <tbody>
-              @foreach($aboutsImage as $abouts)
+              @foreach($aboutsImage as $key=>$abouts)
               <tr>
                 <td>
-                  1
+                  {{ $key + 1 }}
                 </td>
                 <td>
-                  {{ $abouts->image }}
+                  <img class="img-fluid" width="80" src="{{ asset('uploads/about/'.$abouts->image) }}" alt="Card image cap">
                 </td>
                 <td>
                   {{ $abouts->title }}
@@ -94,16 +99,34 @@
                   {{ $abouts->description}}
                 </td>
                 <td>
-                  $36,738
+                  
+                  <div class="row">
+                    <a href="{{ route('aboutimage.edit', $abouts->id) }}" class="btn btn-info btn-sm">
+                      <i class="material-icons">edit</i>
+                    </a>
+                  </div>
+
+                  <div class="row">
+                    <form id="delete-form-{{ $abouts->id }}" action="{{ route('aboutimage.destroy',$abouts->id) }}" style="display: none;" method="POST">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+
+                    <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Estas seguro que quieres eliminar?')){
+                        event.preventDefault();
+                        document.getElementById('delete-form-{{ $abouts->id }}').submit();
+                    }else {
+                        event.preventDefault();
+                            }"><i class="material-icons">delete</i>
+                    </button>
+                    
+                  </div>
+                  
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>
-
-          <a href="{{ route('about.edit', $about->id) }}" class="btn btn-primary pull-right">
-          <i class="material-icons">edit</i>
-        </a>
 
         </div>
       </div>
